@@ -6,12 +6,15 @@ export default createGlobalStyle`
         padding:0;
     }
     body{
-        background-color:#f4f8fb;
         font-family: 'Work Sans', sans-serif;
-        font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
         letter-spacing: normal;
+    }
+    .container{
+      width: calc(100% - 20px);
+      max-width: 1080px;
+      margin: 0 auto;
     }
 `

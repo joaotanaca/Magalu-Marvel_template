@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
+import BaseContainer from '../../components/BaseContainer'
 import api from '../../services/api'
-
-// import { Container } from './styles';
 
 const Home: React.FC = () => {
   const fetchApi = async () => {
@@ -11,7 +10,11 @@ const Home: React.FC = () => {
   useEffect(() => {
     fetchApi()
   }, [])
-  return <div />
+  return (
+    <BaseContainer>
+      <div />
+    </BaseContainer>
+  )
 }
 
 export default Home

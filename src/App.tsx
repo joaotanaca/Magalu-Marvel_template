@@ -11,15 +11,19 @@ import { store } from './store/store'
 function App() {
   return (
     <BrowserRouter>
-      <Global />
       <Provider store={store}>
         <ThemeProvider
           theme={{
             red: '#FF1510',
-            white: '#FDECEC',
-            green: '#E7F6E7'
+            rose: '#FDECEC',
+            white: '#FFF',
+            green: '#E7F6E7',
+            text_primary: '#404040',
+            text_secondary: '#8C8C8C',
+            text_sub: '#B9B9B9'
           }}
         >
+          <Global />
           <Navbar />
           <Switch>
             <Route path="/" exact component={Home} />

@@ -1,15 +1,15 @@
-import { css } from "styled-components";
+import { css } from 'styled-components'
 
 type ObjectKeyString = {
-  [key: string]: string;
-};
+  [key: string]: string
+}
 
 const breakpoints: ObjectKeyString = {
-  xs: "480px",
-  sm: "768px",
-  md: "992px",
-  lg: "1200px",
-};
+  xs: '480px',
+  sm: '768px',
+  md: '992px',
+  lg: '1200px'
+}
 
 const mixins = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (literals: TemplateStringsArray, ...placeholders: string[]) =>
@@ -17,8 +17,8 @@ const mixins = Object.keys(breakpoints).reduce((acc, label) => {
       @media (max-width: ${breakpoints[label]}px) {
         ${css(literals, ...placeholders)};
       }
-    `.join("");
-  return acc;
-}, {} as Record<keyof typeof breakpoints, (l: TemplateStringsArray, ...p: string[]) => string>);
+    `.join('')
+  return acc
+}, {} as Record<keyof typeof breakpoints, (l: TemplateStringsArray, ...p: string[]) => string>)
 
-export default mixins;
+export default mixins

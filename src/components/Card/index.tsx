@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
 // import { Container } from './styles';
 
 const Card: React.FC = () => {
-  return <div />;
-};
+  return <div />
+}
 
-export default Card;
+export default Card

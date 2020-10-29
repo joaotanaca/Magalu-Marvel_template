@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { ThemeProps } from '../../utils/interfaces/styles'
 
+interface PropStyle {
+  theme: ThemeProps
+}
+
 export const Nav = styled.nav.attrs({
   className: 'container'
 })`
@@ -21,12 +25,12 @@ export const TitleNav = styled.h3`
   font-size: calc(12px + 1.7vw);
   text-transform: uppercase;
   font-weight: 600;
-  color: ${({ theme }: { theme: ThemeProps }) => theme.text_primary};
+  color: ${({ theme }: PropStyle) => theme.text_primary};
 `
 export const SubtitleNav = styled.p`
   margin-top: 20px;
   font-size: calc(10px + 0.4vw);
-  color: ${({ theme }: { theme: ThemeProps }) => theme.text_secondary};
+  color: ${({ theme }: PropStyle) => theme.text_secondary};
 `
 
 export const InputContainer = styled.div`
@@ -44,12 +48,12 @@ export const InputContainer = styled.div`
     width: calc(100% - 80px);
     padding: 20px 0 20px 80px;
     border-radius: 30px;
-    background-color: ${({ theme }: { theme: ThemeProps }) => theme.rose};
-    color: ${({ theme }: { theme: ThemeProps }) => theme.red};
+    background-color: ${({ theme }: PropStyle) => theme.rose};
+    color: ${({ theme }: PropStyle) => theme.red};
     font-size: calc(11px + 0.4vw);
     border: 0;
     &::placeholder {
-      color: ${({ theme }: { theme: ThemeProps }) => theme.red};
+      color: ${({ theme }: PropStyle) => theme.red};
     }
   }
 `

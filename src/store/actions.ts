@@ -1,22 +1,24 @@
+import { ICompleteCharacter } from '../utils/interfaces/characters'
+
 export const ADD_CHARACTERS = 'ADD_CHARACTERS'
 export const REMOVE_CHARACTERS = 'REMOVE_CHARACTERS'
 export const SEARCH = 'SEARCH'
 
 /**
  *
- * @param character: ICharacter
+ * @param character: ICompleteCharacter
  */
-export const addCharacters = (characterID: number) => ({
-  characterID,
+export const addCharacters = (character: ICompleteCharacter) => ({
+  character,
   type: ADD_CHARACTERS
 })
 
 /**
  *
- * @param characterID: number
+ * @param character: number
  */
-export const removeCharacters = (characterID: number) => ({
-  characterID,
+export const removeCharacters = (character: number) => ({
+  character,
   type: REMOVE_CHARACTERS
 })
 

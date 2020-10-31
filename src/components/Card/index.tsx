@@ -28,7 +28,7 @@ const Card = ({ hero }: { hero: ICompleteCharacter }) => {
       </ImageContainer>
       <BottomContainer>
         {hero.name}
-        {favorite.includes(hero.id) ? (
+        {favorite.find(heroFavorited => heroFavorited.id === hero.id) ? (
           <Icon.IoMdHeart
             {...IconStyle}
             onClick={() => dispatch(removeCharacters(hero.id))}
@@ -36,7 +36,7 @@ const Card = ({ hero }: { hero: ICompleteCharacter }) => {
         ) : (
           <Icon.IoMdHeartEmpty
             {...IconStyle}
-            onClick={() => dispatch(addCharacters(hero.id))}
+            onClick={() => favorite.length < 5 && dispatch(addCharacters(hero))}
           />
         )}
       </BottomContainer>

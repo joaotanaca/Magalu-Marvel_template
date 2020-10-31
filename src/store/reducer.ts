@@ -1,21 +1,22 @@
+import { ICompleteCharacter } from '../utils/interfaces/characters'
 import { ADD_CHARACTERS, REMOVE_CHARACTERS, SEARCH } from './actions'
 
-const initialState: number[] = JSON.parse(
+const initialState: ICompleteCharacter[] = JSON.parse(
   localStorage.getItem('FAVORITE_HERO') ?? '[]'
 )
 
 export function favorite(
   state = initialState,
-  action: { type: string; characterID?: number }
+  action: { type: string; character?: ICompleteCharacter | number }
 ) {
   switch (action.type) {
     case ADD_CHARACTERS: {
-      const favorite = [...state, action.characterID]
+      const favorite = [...state, action.character]
       localStorage.setItem('FAVORITE_HERO', JSON.stringify(favorite))
       return favorite
     }
     case REMOVE_CHARACTERS: {
-      const favorite = state.filter(id => id !== action.characterID)
+      const favorite = state.filter(hero => hero.id !== action.character)
       localStorage.setItem('FAVORITE_HERO', JSON.stringify(favorite))
       return favorite
     }

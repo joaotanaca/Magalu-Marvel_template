@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import mixins from '../../styles/mixins'
 import { ThemeProps } from '../../utils/interfaces/styles'
 
 export const CardContainer = styled.div`
@@ -6,7 +7,10 @@ export const CardContainer = styled.div`
   text-align: left;
   display: flex;
   flex-flow: column;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  ${mixins.sm`
+    flex-basis: calc(100% - 20px);
+  `}
 `
 
 export const BottomContainer = styled.div`
@@ -19,6 +23,9 @@ export const BottomContainer = styled.div`
 export const ImageContainer = styled.div`
   width: 100%;
   height: 20vw;
+  ${mixins.sm`
+    height: 70vw;
+  `}
   border-bottom: 3px solid ${(props: { theme: ThemeProps }) => props.theme.red};
   img {
     width: 100%;

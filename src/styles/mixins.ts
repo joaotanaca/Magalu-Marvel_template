@@ -14,7 +14,7 @@ const breakpoints: ObjectKeyString = {
 const mixins = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (literals: TemplateStringsArray, ...placeholders: string[]) =>
     css`
-      @media (max-width: ${breakpoints[label]}px) {
+      @media (max-width: ${breakpoints[label]}) {
         ${css(literals, ...placeholders)};
       }
     `.join('')

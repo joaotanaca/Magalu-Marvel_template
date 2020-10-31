@@ -1,4 +1,6 @@
+import { ICompleteCharacter } from './characters'
+
 export interface StateRedux {
-  favorite: number[]
+  favorite: ICompleteCharacter[]
   search: string
 }

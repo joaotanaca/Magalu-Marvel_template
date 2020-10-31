@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import mixins from '../../styles/mixins'
 import { ThemeProps } from '../../utils/interfaces/styles'
 
 interface PropStyle {
@@ -31,6 +32,9 @@ export const SubtitleNav = styled.p`
   margin-top: 20px;
   font-size: calc(10px + 0.4vw);
   color: ${({ theme }: PropStyle) => theme.text_secondary};
+  ${mixins.sm`
+    display: none;
+  `}
 `
 
 export const InputContainer = styled.div`

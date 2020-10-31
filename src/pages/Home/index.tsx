@@ -110,19 +110,21 @@ const Home = () => {
         </Header>
         <CardsContainer>
           {renderCards()}
-          <BottomContainerCards>
-            {loadingHeros ? (
-              <SpinnerLoading size={30} color={theme.red} />
-            ) : (
-              <MoreHeros
-                onClick={() => {
-                  setPage(prev => prev + 1)
-                }}
-              >
-                Carregar heróis
-              </MoreHeros>
-            )}
-          </BottomContainerCards>
+          {!onlyFavortites && (
+            <BottomContainerCards>
+              {loadingHeros ? (
+                <SpinnerLoading size={30} color={theme.red} />
+              ) : (
+                <MoreHeros
+                  onClick={() => {
+                    setPage(prev => prev + 1)
+                  }}
+                >
+                  Carregar heróis
+                </MoreHeros>
+              )}
+            </BottomContainerCards>
+          )}
         </CardsContainer>
       </>
     </BaseContainer>

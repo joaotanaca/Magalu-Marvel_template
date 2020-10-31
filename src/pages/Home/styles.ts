@@ -57,6 +57,7 @@ export const OnlyFavorites = styled.p`
 `
 
 export const FilterMobile = styled.div`
+  color: ${(props: { theme: ThemeProps }) => props.theme.red};
   display: none;
   position: relative;
   ${mixins.sm`

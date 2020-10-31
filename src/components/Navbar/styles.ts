@@ -17,6 +17,9 @@ export const Nav = styled.nav.attrs({
 export const ImageContainer = styled.div`
   width: 30%;
   margin: 20px 0;
+  ${mixins.sm`
+    width: 70%;
+  `}
   img {
     width: 100%;
   }
@@ -38,24 +41,30 @@ export const SubtitleNav = styled.p`
 `
 
 export const InputContainer = styled.div`
-  width: 80%;
+  width: 90%;
   margin-top: 20px;
   position: relative;
   img {
     position: absolute;
     width: 30px;
     top: 50%;
-    left: 20px;
+    left: 10px;
     transform: translateY(-50%);
+    ${mixins.sm`
+        width: 20px;
+    `}
   }
   input {
-    width: calc(100% - 80px);
+    width: calc(100% - 40px);
     padding: 20px 0 20px 80px;
     border-radius: 30px;
     background-color: ${({ theme }: PropStyle) => theme.rose};
     color: ${({ theme }: PropStyle) => theme.red};
     font-size: calc(11px + 0.4vw);
     border: 0;
+    ${mixins.sm`
+      padding: 10px 0 10px 40px;
+    `}
     &::placeholder {
       color: ${({ theme }: PropStyle) => theme.red};
     }

@@ -8,6 +8,7 @@ import { ThemeProps } from '../../utils/interfaces/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { StateRedux } from '../../utils/interfaces/redux'
 import { addCharacters, removeCharacters } from '../../store/actions'
+import { Link } from 'react-router-dom'
 
 const Card = ({ hero }: { hero: ICompleteCharacter }) => {
   const theme: ThemeProps = useContext(ThemeContext)
@@ -27,7 +28,7 @@ const Card = ({ hero }: { hero: ICompleteCharacter }) => {
         />
       </ImageContainer>
       <BottomContainer>
-        {hero.name}
+        <Link to={`/hero/${hero.id}`}>{hero.name}</Link>
         {favorite.find(heroFavorited => heroFavorited.id === hero.id) ? (
           <Icon.IoMdHeart
             {...IconStyle}

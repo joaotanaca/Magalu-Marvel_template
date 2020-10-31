@@ -7,7 +7,7 @@ export const CardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  ${mixins.sm`
+  ${mixins.xs`
     justify-content: center;
   `}
 `
@@ -112,6 +112,6 @@ export const MoreHeros = styled.button`
   background-color: ${(props: { theme: ThemeProps }) => props.theme.red};
   border: 0;
   border-radius: 5px;
-  font-size: calc(9px + 1vw);
+  font-size: calc(9px + 0.5vw);
   padding: 10px 20px;
 `

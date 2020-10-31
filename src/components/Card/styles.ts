@@ -8,8 +8,11 @@ export const CardContainer = styled.div`
   display: flex;
   flex-flow: column;
   margin-bottom: 40px;
-  ${mixins.sm`
+  ${mixins.xs`
     flex-basis: calc(100% - 20px);
+  `}
+  ${mixins.sm`
+    flex-basis: calc(50% - 20px);
   `}
 `
 
@@ -19,12 +22,19 @@ export const BottomContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+  a {
+    text-decoration: none;
+    color: ${(props: { theme: ThemeProps }) => props.theme.text_primary};
+  }
 `
 export const ImageContainer = styled.div`
   width: 100%;
   height: 20vw;
-  ${mixins.sm`
+  ${mixins.xs`
     height: 70vw;
+  `}
+  ${mixins.sm`
+    height: 50vw;
   `}
   border-bottom: 3px solid ${(props: { theme: ThemeProps }) => props.theme.red};
   img {

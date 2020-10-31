@@ -12,10 +12,12 @@ import SearchIcon from './SearchIcon.png'
 import { StateRedux } from '../../utils/interfaces/redux'
 import { searchHero } from '../../store/actions'
 import { Dispatch } from 'redux'
+import { useLocation } from 'react-router-dom'
 
 const Navbar = () => {
   const dispatch: Dispatch = useDispatch()
   const { search } = useSelector((state: StateRedux) => state)
+  const { pathname } = useLocation()
   /**
    *
    * @param e: FormEvent<HTMLInputElement>
@@ -25,15 +27,19 @@ const Navbar = () => {
   }
 
   return (
-    <Nav>
-      <ImageContainer>
+    <Nav className={pathname !== '/' ? 'container hero' : 'container'}>
+      <ImageContainer to="/">
         <img src="/Group@3x.png" />
       </ImageContainer>
-      <TitleNav>explore o universo</TitleNav>
-      <SubtitleNav>
-        Mergulhe no domínio deslumbrante de todos os personagens clássicos que
-        você ama - e aqueles que você descobrirá em breve!
-      </SubtitleNav>
+      {pathname === '/' && (
+        <>
+          <TitleNav>explore o universo</TitleNav>
+          <SubtitleNav>
+            Mergulhe no domínio deslumbrante de todos os personagens clássicos
+            que você ama - e aqueles que você descobrirá em breve!
+          </SubtitleNav>
+        </>
+      )}
       <InputContainer>
         <img src={SearchIcon} alt="Icone de pesquisa" />
         <input

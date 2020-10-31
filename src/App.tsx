@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Global from './styles/global'
 import { store } from './store/store'
+import Heros from './pages/Heros'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Global />
           <Navbar />
           <Switch>
+            <Route path="/hero/:id" component={Heros} />
             <Route path="/" exact component={Home} />
           </Switch>
         </ThemeProvider>

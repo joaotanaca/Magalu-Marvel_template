@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { ThemeProps } from '../utils/interfaces/styles'
 
 export default createGlobalStyle`
     *{
@@ -11,6 +12,7 @@ export default createGlobalStyle`
         font-style: normal;
         line-height: normal;
         letter-spacing: normal;
+        color: ${(props: { theme: ThemeProps }) => props.theme.text_primary};
     }
     .container{
       width: calc(100% - 20px);

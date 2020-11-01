@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import mixins from '../../styles/mixins'
 import { ThemeProps } from '../../utils/interfaces/styles'
 
 export const Container = styled.div`
@@ -23,6 +24,9 @@ export const ContainerInformationsRight = styled.div`
   display: flex;
   flex-flow: column;
   margin-left: 20px;
+  ${mixins.sm`
+    display: none;
+  `}
   img {
     width: 100%;
     height: 100%;
@@ -106,6 +110,9 @@ export const Comic = styled.div`
   flex-basis: calc(15% - 40px);
   margin: 40px 0;
   padding: 0 20px;
+  ${mixins.sm`
+    flex-basis: calc(50% - 40px);
+  `}
   img {
     width: 100%;
     object-fit: contain;

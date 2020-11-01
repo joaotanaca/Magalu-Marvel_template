@@ -115,7 +115,7 @@ const Heros = () => {
                   <p>Filmes</p>
                   <div>
                     <img src={movies} />
-                    {hero.stories.available}
+                    {hero.series.available}
                   </div>
                 </Movies>
               </MoviesComics>

@@ -6,10 +6,6 @@ import { ThemeProps } from '../../utils/interfaces/styles'
 interface PropStyle {
   theme: ThemeProps
 }
-interface ContainerProps {
-  theme: ThemeProps
-  route: string
-}
 
 export const Nav = styled.nav`
   display: flex;

@@ -48,6 +48,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchApi()
+    document.title = 'Marvel - Search heros'
   }, [page])
 
   const renderCards = useCallback(() => {

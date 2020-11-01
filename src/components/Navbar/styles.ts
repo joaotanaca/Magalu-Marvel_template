@@ -114,3 +114,20 @@ export const InputContainer = styled.div.attrs({
     }
   }
 `
+export const PreviewSearch = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  width: calc(100% - 40px);
+  padding: 10px 20px;
+  background-color: '#FFF';
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+`
+export const Preview = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`

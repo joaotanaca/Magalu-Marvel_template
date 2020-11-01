@@ -31,6 +31,7 @@ import { ThemeProps } from '../../utils/interfaces/styles'
 import { addCharacters, removeCharacters } from '../../store/actions'
 import book from './book.png'
 import movies from './video.png'
+import { SpinnerLoading } from '../Home/styles'
 
 const Heros = () => {
   const params: { id: string } = useParams()
@@ -38,6 +39,10 @@ const Heros = () => {
   const dispatch = useDispatch()
   const { favorite } = useSelector((state: StateRedux) => state)
   const [hero, setHero] = useState<ICompleteCharacter>()
+  const [{ comics, heroLoading }, setLoading] = useState<{
+    comics: boolean
+    heroLoading: boolean
+  }>({ comics: false, heroLoading: false })
   const [comicsArray, setComicsArray] = useState<any[]>([])
 
   const IconStyle: IconBaseProps = useMemo(
@@ -50,9 +55,16 @@ const Heros = () => {
   )
 
   useEffect(() => {
-    api
-      .get(`/characters/${params.id}`)
-      .then(res => setHero(res.data.data.results[0]))
+    setHero(undefined)
+    setComicsArray([])
+    setLoading(prev => ({ ...prev, heroLoading: true }))
+    api.get(`/characters/${params.id}`).then(res => {
+      setHero(res.data.data.results[0])
+      setLoading(prev => ({ ...prev, heroLoading: false }))
+      document.title = res.data.data.results[0].name
+      console.log(res.data.data.results[0])
+    })
+    setLoading(prev => ({ ...prev, comics: true }))
     api
       .get(`/characters/${params.id}/comics`, {
         params: {
@@ -61,14 +73,14 @@ const Heros = () => {
         }
       })
       .then(({ data }) => {
-        console.log(data.data.results)
         setComicsArray([...data.data.results])
+        setLoading(prev => ({ ...prev, comics: false }))
       })
-  }, [])
+  }, [params])
 
   return (
     <BaseContainer>
-      {hero ? (
+      {!heroLoading && hero ? (
         <Container>
           <ContainerInformations>
             <ContainerInformationsLeft>
@@ -133,21 +145,41 @@ const Heros = () => {
               <img src={hero.thumbnail.path + '.' + hero.thumbnail.extension} />
             </ContainerInformationsRight>
           </ContainerInformations>
-          <ComicsContainer>
-            <TitleComics>Últimos lançamentos:</TitleComics>
-            {comicsArray.map(comic => (
-              <Comic key={comic.id}>
-                <img
-                  src={comic.thumbnail.path + '.' + comic.thumbnail.extension}
-                />
-                {comic.title}
-              </Comic>
-            ))}
-          </ComicsContainer>
-          <></>
+          {!comics ? (
+            <ComicsContainer>
+              <TitleComics>Últimos lançamentos:</TitleComics>
+              {comicsArray.map(comic => (
+                <Comic key={comic.id}>
+                  <img
+                    src={comic.thumbnail.path + '.' + comic.thumbnail.extension}
+                  />
+                  {comic.title}
+                </Comic>
+              ))}
+            </ComicsContainer>
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: 20
+              }}
+            >
+              <SpinnerLoading size={30} color={theme.red} />
+            </div>
+          )}
         </Container>
       ) : (
-        <></>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <SpinnerLoading size={30} color={theme.red} />
+        </div>
       )}
     </BaseContainer>
   )
